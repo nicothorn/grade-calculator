@@ -16,7 +16,7 @@ while (readyForGrade == False):
         else:
           print("Please enter a positive number.")
           continue
-      except:
+      except ValueError:
         print("Please enter a positive number.")
         continue
 
@@ -29,7 +29,7 @@ while (readyForGrade == False):
         else:
           print("Please enter a positive number.")
           continue
-      except:
+      except ValueError:
         print("Please enter a positive number.")
         continue
 
@@ -45,7 +45,7 @@ while (readyForGrade == False):
         else:
           print("Please enter yes or no.")
           continue
-      except:
+      except ValueError:
         print("Please enter yes or no.")
         continue
     if (currentStep == 4):
@@ -57,7 +57,7 @@ while (readyForGrade == False):
         else:
           print("Please enter a positive number.")
           continue
-      except:
+      except ValueError:
         print("Please enter a positive number.")
         continue
 
@@ -72,7 +72,7 @@ while (readyForGrade == False):
         else:
           print("Please enter yes or no.")
           continue
-      except:
+      except ValueError:
         print("Please enter a positive number.")
         continue
 

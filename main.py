@@ -11,7 +11,7 @@ while (readyForGrade == False):
       earnedPoints = input("Enter the number of points earned on assignment #{}: ".format(currentAssignmentNumber))
       try:
         if (float(earnedPoints) > 0):
-          earnedPointsList.append(earnedPoints)
+          earnedPointsList.append(float(earnedPoints))
           currentStep = 2
         else:
           print("Please enter a positive number.")
@@ -24,7 +24,7 @@ while (readyForGrade == False):
       maxPoints = input("Enter the maximum total points possible for assignment #{}: ".format(currentAssignmentNumber))
       try:
         if (float(maxPoints) > 0):
-          maxPointsList.append(maxPoints)
+          maxPointsList.append(float(maxPoints))
           currentStep = 3
         else:
           print("Please enter a positive number.")
@@ -38,7 +38,7 @@ while (readyForGrade == False):
         isWeighted = input("Is assignment #{} weighted? ".format(currentAssignmentNumber))
         if (isWeighted == "no".lower()):
           weight = 1
-          weightsList.append(weight)
+          weightsList.append(float(weight))
           currentStep = 5
         elif (isWeighted == "yes".lower()):
           currentStep = 4
@@ -49,10 +49,10 @@ while (readyForGrade == False):
         print("Please enter yes or no.")
         continue
     if (currentStep == 4):
-      weight = input("How much is assignment #{} weighted by? (Example: If it is weighted 2.5 times more than other assignments, enter 2.5.) ".format(currentAssignmentNumber))
+      weight = input("How much is assignment #{} weighted by? (Example: If it is weighted 2.5 times more than other assignments, enter 2.5.): ".format(currentAssignmentNumber))
       try:
         if (float(weight) > 0):
-          weightsList.append(weight)
+          weightsList.append(float(weight))
           currentStep = 5
         else:
           print("Please enter a positive number.")
@@ -82,13 +82,13 @@ maxPointsTotal = []
 if len(earnedPointsList) > 1:
   for i in range(len(earnedPointsList)):
     earnedPointsCalc = earnedPointsList[i] * weightsList[i]
-    earnedPointsTotal.append(float(earnedPointsCalc))
+    earnedPointsTotal.append(earnedPointsCalc)
     maxPointsCalc = maxPointsList[i] * weightsList[i]
-    maxPointsTotal.append(float(maxPointsCalc))
+    maxPointsTotal.append(maxPointsCalc)
 
 else:
-  earnedPointsTotal.append(float(earnedPointsList[0]) * float(weightsList[0]))
-  maxPointsTotal.append(float(maxPointsList[0]) * float(weightsList[0]))
+  earnedPointsTotal.append(earnedPointsList[0] * weightsList[0])
+  maxPointsTotal.append(maxPointsList[0] * weightsList[0])
 
 earnedPoints = sum(earnedPointsTotal)
 maxPoints = sum(maxPointsTotal)

@@ -93,6 +93,7 @@ else:
 earnedPoints = sum(earnedPointsTotal)
 maxPoints = sum(maxPointsTotal)
 currentGrade = earnedPoints / maxPoints
+print("----------")
 
 if (currentGrade >= 0.7):
   print("Your current grade is {:.1%}. You're passing!".format(currentGrade))

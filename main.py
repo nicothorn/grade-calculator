@@ -1,0 +1,100 @@
+readyForGrade = False
+currentStep = 1
+currentAssignmentNumber = 1
+earnedPointsList = []
+maxPointsList = []
+weightsList = []
+
+while (readyForGrade == False):
+
+    if (currentStep == 1):
+      earnedPoints = input("Enter the number of points earned on assignment #{}: ".format(currentAssignmentNumber))
+      try:
+        if (float(earnedPoints) > 0):
+          earnedPointsList.append(earnedPoints)
+          currentStep = 2
+        else:
+          print("Please enter a positive number.")
+          continue
+      except:
+        print("Please enter a positive number.")
+        continue
+
+    if (currentStep == 2):
+      maxPoints = input("Enter the maximum total points possible for assignment #{}: ".format(currentAssignmentNumber))
+      try:
+        if (float(maxPoints) > 0):
+          maxPointsList.append(maxPoints)
+          currentStep = 3
+        else:
+          print("Please enter a positive number.")
+          continue
+      except:
+        print("Please enter a positive number.")
+        continue
+
+    if (currentStep == 3):
+      try:
+        isWeighted = input("Is assignment #{} weighted? ".format(currentAssignmentNumber))
+        if (isWeighted == "no".lower()):
+          weight = 1
+          weightsList.append(weight)
+          currentStep = 5
+        elif (isWeighted == "yes".lower()):
+          currentStep = 4
+        else:
+          print("Please enter yes or no.")
+          continue
+      except:
+        print("Please enter yes or no.")
+        continue
+    if (currentStep == 4):
+      weight = input("How much is assignment #{} weighted by? (Example: If it is weighted 2.5 times more than other assignments, enter 2.5.) ".format(currentAssignmentNumber))
+      try:
+        if (float(weight) > 0):
+          weightsList.append(weight)
+          currentStep = 5
+        else:
+          print("Please enter a positive number.")
+          continue
+      except:
+        print("Please enter a positive number.")
+        continue
+
+    if (currentStep == 5):
+      addAnotherAssignment = input("Do you want to enter the grade for another assignment? ")
+      try:
+        if (addAnotherAssignment == "yes".lower()):
+          currentAssignmentNumber += 1
+          currentStep = 1
+        elif (addAnotherAssignment == "no".lower()):
+          readyForGrade = True
+        else:
+          print("Please enter yes or no.")
+          continue
+      except:
+        print("Please enter a positive number.")
+        continue
+
+earnedPointsTotal = []
+maxPointsTotal = []
+
+if len(earnedPointsList) > 1:
+  for i in range(len(earnedPointsList)):
+    earnedPointsCalc = earnedPointsList[i] * weightsList[i]
+    earnedPointsTotal.append(float(earnedPointsCalc))
+    maxPointsCalc = maxPointsList[i] * weightsList[i]
+    maxPointsTotal.append(float(maxPointsCalc))
+
+else:
+  earnedPointsTotal.append(float(earnedPointsList[0]) * float(weightsList[0]))
+  maxPointsTotal.append(float(maxPointsList[0]) * float(weightsList[0]))
+
+earnedPoints = sum(earnedPointsTotal)
+maxPoints = sum(maxPointsTotal)
+currentGrade = earnedPoints / maxPoints
+
+if (currentGrade >= 0.7):
+  print("Your current grade is {:.1%}. You're passing!".format(currentGrade))
+else:
+  print("Your current grade is {:.1%}. You're failing. :(".format(currentGrade))

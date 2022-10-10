@@ -35,7 +35,7 @@ while (readyForGrade == False):
 
     if (currentStep == 3):
       try:
-        isWeighted = input("Is assignment #{} weighted? ".format(currentAssignmentNumber))
+        isWeighted = input("Is the grade for assignment #{} weighted? ".format(currentAssignmentNumber))
         if (isWeighted == "no".lower()):
           weight = 1
           weightsList.append(float(weight))
@@ -62,7 +62,7 @@ while (readyForGrade == False):
         continue
 
     if (currentStep == 5):
-      addAnotherAssignment = input("Do you want to enter the grade for another assignment? ")
+      addAnotherAssignment = input("Do you want to input another assignment? ")
       try:
         if (addAnotherAssignment == "yes".lower()):
           currentAssignmentNumber += 1

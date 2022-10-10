@@ -13,74 +13,74 @@ def pos_num():
 
 while (readyForGrade == False):
 
-    if (currentStep == 1):
-      earnedPoints = input("Enter the number of points earned on assignment #{}: ".format(currentAssignmentNumber))
-      try:
-        if (float(earnedPoints) > 0):
-          earnedPointsList.append(float(earnedPoints))
-          currentStep = 2
-        else:
-          pos_num()
-          continue
-      except ValueError:
+  if (currentStep == 1):
+    earnedPoints = input("Enter the number of points earned on assignment #{}: ".format(currentAssignmentNumber))
+    try:
+      if (float(earnedPoints) > 0):
+        earnedPointsList.append(float(earnedPoints))
+        currentStep = 2
+      else:
         pos_num()
         continue
+    except ValueError:
+      pos_num()
+      continue
 
-    if (currentStep == 2):
-      maxPoints = input("Enter the maximum total points possible for assignment #{}: ".format(currentAssignmentNumber))
-      try:
-        if (float(maxPoints) > 0):
-          maxPointsList.append(float(maxPoints))
-          currentStep = 3
-        else:
-          pos_num()
-          continue
-      except ValueError:
+  if (currentStep == 2):
+    maxPoints = input("Enter the maximum total points possible for assignment #{}: ".format(currentAssignmentNumber))
+    try:
+      if (float(maxPoints) > 0):
+        maxPointsList.append(float(maxPoints))
+        currentStep = 3
+      else:
         pos_num()
         continue
+    except ValueError:
+      pos_num()
+      continue
 
-    if (currentStep == 3):
-      try:
-        isWeighted = input("Is the grade for assignment #{} weighted? ".format(currentAssignmentNumber))
-        if (isWeighted.lower() == "no"):
-          weight = 1
-          weightsList.append(float(weight))
-          currentStep = 5
-        elif (isWeighted.lower() == "yes"):
-          currentStep = 4
-        else:
-          yes_or_no()
-          continue
-      except ValueError:
+  if (currentStep == 3):
+    try:
+      isWeighted = input("Is the grade for assignment #{} weighted? ".format(currentAssignmentNumber))
+      if (isWeighted.lower().strip() == "no"):
+        weight = 1
+        weightsList.append(float(weight))
+        currentStep = 5
+      elif (isWeighted.lower().strip() == "yes"):
+        currentStep = 4
+      else:
         yes_or_no()
         continue
-    if (currentStep == 4):
-      weight = input("How much is assignment #{} weighted by? (Example: If it is weighted 2.5 times more than other assignments, enter 2.5.): ".format(currentAssignmentNumber))
-      try:
-        if (float(weight) > 0):
-          weightsList.append(float(weight))
-          currentStep = 5
-        else:
-          pos_num()
-          continue
-      except ValueError:
+    except ValueError:
+      yes_or_no()
+      continue
+  if (currentStep == 4):
+    weight = input("How much is assignment #{} weighted by? (Example: If it is weighted 2.5 times more than other assignments, enter 2.5.): ".format(currentAssignmentNumber))
+    try:
+      if (float(weight) > 0):
+        weightsList.append(float(weight))
+        currentStep = 5
+      else:
         pos_num()
         continue
+    except ValueError:
+      pos_num()
+      continue
 
-    if (currentStep == 5):
-      addAnotherAssignment = input("Do you want to input another assignment? ")
-      try:
-        if (addAnotherAssignment.lower() == "yes"):
-          currentAssignmentNumber += 1
-          currentStep = 1
-        elif (addAnotherAssignment.lower() == "no"):
-          readyForGrade = True
-        else:
-          yes_or_no()
-          continue
-      except ValueError:
+  if (currentStep == 5):
+    addAnotherAssignment = input("Do you want to input another assignment? ")
+    try:
+      if (addAnotherAssignment.lower().strip() == "yes"):
+        currentAssignmentNumber += 1
+        currentStep = 1
+      elif (addAnotherAssignment.lower().strip() == "no"):
+        readyForGrade = True
+      else:
         yes_or_no()
         continue
+    except ValueError:
+      yes_or_no()
+      continue
 
 earnedPointsTotal = []
 maxPointsTotal = []

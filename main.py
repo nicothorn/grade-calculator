@@ -5,6 +5,12 @@ earnedPointsList = []
 maxPointsList = []
 weightsList = []
 
+def yes_or_no():
+  print("Please enter yes or no.")
+
+def pos_num():
+  print("Please enter a positive number.")
+
 while (readyForGrade == False):
 
     if (currentStep == 1):
@@ -14,10 +20,10 @@ while (readyForGrade == False):
           earnedPointsList.append(float(earnedPoints))
           currentStep = 2
         else:
-          print("Please enter a positive number.")
+          pos_num()
           continue
       except ValueError:
-        print("Please enter a positive number.")
+        pos_num()
         continue
 
     if (currentStep == 2):
@@ -27,10 +33,10 @@ while (readyForGrade == False):
           maxPointsList.append(float(maxPoints))
           currentStep = 3
         else:
-          print("Please enter a positive number.")
+          pos_num()
           continue
       except ValueError:
-        print("Please enter a positive number.")
+        pos_num()
         continue
 
     if (currentStep == 3):
@@ -43,10 +49,10 @@ while (readyForGrade == False):
         elif (isWeighted.lower() == "yes"):
           currentStep = 4
         else:
-          print("Please enter yes or no.")
+          yes_or_no()
           continue
       except ValueError:
-        print("Please enter yes or no.")
+        yes_or_no()
         continue
     if (currentStep == 4):
       weight = input("How much is assignment #{} weighted by? (Example: If it is weighted 2.5 times more than other assignments, enter 2.5.): ".format(currentAssignmentNumber))
@@ -55,10 +61,10 @@ while (readyForGrade == False):
           weightsList.append(float(weight))
           currentStep = 5
         else:
-          print("Please enter a positive number.")
+          pos_num()
           continue
       except ValueError:
-        print("Please enter a positive number.")
+        pos_num()
         continue
 
     if (currentStep == 5):
@@ -70,10 +76,10 @@ while (readyForGrade == False):
         elif (addAnotherAssignment.lower() == "no"):
           readyForGrade = True
         else:
-          print("Please enter yes or no.")
+          yes_or_no()
           continue
       except ValueError:
-        print("Please enter a positive number.")
+        yes_or_no()
         continue
 
 earnedPointsTotal = []

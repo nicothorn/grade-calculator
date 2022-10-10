@@ -36,11 +36,11 @@ while (readyForGrade == False):
     if (currentStep == 3):
       try:
         isWeighted = input("Is the grade for assignment #{} weighted? ".format(currentAssignmentNumber))
-        if (isWeighted == "no".lower()):
+        if (isWeighted.lower() == "no"):
           weight = 1
           weightsList.append(float(weight))
           currentStep = 5
-        elif (isWeighted == "yes".lower()):
+        elif (isWeighted.lower() == "yes"):
           currentStep = 4
         else:
           print("Please enter yes or no.")
@@ -64,10 +64,10 @@ while (readyForGrade == False):
     if (currentStep == 5):
       addAnotherAssignment = input("Do you want to input another assignment? ")
       try:
-        if (addAnotherAssignment == "yes".lower()):
+        if (addAnotherAssignment.lower() == "yes"):
           currentAssignmentNumber += 1
           currentStep = 1
-        elif (addAnotherAssignment == "no".lower()):
+        elif (addAnotherAssignment.lower() == "no"):
           readyForGrade = True
         else:
           print("Please enter yes or no.")

@@ -90,9 +90,8 @@ else:
   earnedPointsTotal.append(earnedPointsList[0] * weightsList[0])
   maxPointsTotal.append(maxPointsList[0] * weightsList[0])
 
-earnedPoints = sum(earnedPointsTotal)
-maxPoints = sum(maxPointsTotal)
-currentGrade = earnedPoints / maxPoints
+currentGrade = sum(earnedPointsTotal) / sum(maxPointsTotal)
+
 print("----------")
 
 if (currentGrade >= 0.7):

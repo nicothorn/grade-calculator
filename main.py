@@ -1,4 +1,4 @@
-# This program takes user input of assignment/exam grades, including 
+# This program takes user input of assignment/exam grades, including
 # weighted grades, and outputs the user's current grade and whether they # are passing or failing.
 
 # Initialize
@@ -9,20 +9,25 @@ earnedPointsList = []
 maxPointsList = []
 weightsList = []
 
+
 # Functions for printing repeated error messages
 def yes_or_no():
   print("Please enter yes or no.")
 
+
 def pos_num():
   print("Please enter a positive number or zero.")
 
-# Point of entry for the user to enter assignment grades; loop until user 
+
+# Point of entry for the user to enter assignment grades; loop until user
 # is done entering their grades
 while (readyForGrade == False):
 
   # Prompt user to enter points earned for assignment
   if (currentStep == 1):
-    earnedPoints = input("Enter the number of points earned on assignment #{}: ".format(currentAssignmentNumber))
+    earnedPoints = input(
+      "Enter the number of points earned on assignment #{}: ".format(
+        currentAssignmentNumber))
     # Check if input is a valid positive number
     try:
       # Check if input is a number greater than 0.
@@ -36,7 +41,9 @@ while (readyForGrade == False):
 
   # Prompt user to enter maximum total points
   if (currentStep == 2):
-    maxPoints = input("Enter the maximum total points possible for assignment #{}: ".format(currentAssignmentNumber))
+    maxPoints = input(
+      "Enter the maximum total points possible for assignment #{}: ".format(
+        currentAssignmentNumber))
     # Check if input is a valid positive number
     try:
       if (float(maxPoints) >= 0):
@@ -51,7 +58,8 @@ while (readyForGrade == False):
   if (currentStep == 3):
     # Check if input was yes or no
     try:
-      isWeighted = input("Is the grade for assignment #{} weighted? ".format(currentAssignmentNumber))
+      isWeighted = input("Is the grade for assignment #{} weighted? ".format(
+        currentAssignmentNumber))
       # Check if answer is "no"
       if (isWeighted.lower().strip() == "no"):
         weight = 1
@@ -64,10 +72,12 @@ while (readyForGrade == False):
         yes_or_no()
     except ValueError:
       yes_or_no()
-  
+
   # Prompt user how much assignment is weighted by
   if (currentStep == 4):
-    weight = input("How much is assignment #{} weighted by? (Example: If it is weighted 2.5 times more than other assignments, enter 2.5.): ".format(currentAssignmentNumber))
+    weight = input(
+      "How much is assignment #{} weighted by? (Example: If it is weighted 2.5 times more than other assignments, enter 2.5.): "
+      .format(currentAssignmentNumber))
     # Check if input is a valid positive number
     try:
       if (float(weight) > 0):
@@ -94,6 +104,7 @@ while (readyForGrade == False):
     except ValueError:
       yes_or_no()
 
+
 # Initialize for grading calculations
 earnedPointsTotal = []
 maxPointsTotal = []
@@ -103,16 +114,20 @@ def get_current_grade():
   # Calculate current grade in decimal format
   currentGrade = sum(earnedPointsTotal) / sum(maxPointsTotal)
   print("----------")
-  # Display final result as a percentage and determine if the user is 
+  # Display final result as a percentage and determine if the user is
   # passing
   if (currentGrade >= 0.7):
     print("Your current grade is {:.1%}. You're passing!".format(currentGrade))
   else:
-    print("Your current grade is {:.1%}. You're failing. :(".format(currentGrade))
+    print(
+      "Your current grade is {:.1%}. You're failing. :(".format(currentGrade))
+
 
 # Print error if max points input is 0 because cannot divide by 0
 if sum(maxPointsList) == 0:
-  print("Cannot calculate current grade if maximum total points entered is zero for all assignments. Please restart program and input valid maximum points.")
+  print(
+    "Cannot calculate current grade if maximum total points entered is zero for all assignments. Please restart program and input valid maximum points."
+  )
 
 # Calculate points if user input more than one assignment
 elif len(earnedPointsList) > 1:
